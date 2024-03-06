@@ -172,17 +172,20 @@ class Linkedlist:
         hold.next = None
 
     def mergelist(self, list2):
-        lastnode = self.head
-        while lastnode.next :
-            if lastnode.next is self.head:
-                lastnode.next = list2.head
-                break
-            lastnode = lastnode.next
+        if self.head is None or list2.head is None:
+            print("Empty list!cant merge an empty list ")
+        else:
+            lastnode = self.head
+            while lastnode.next :
+                if lastnode.next is self.head:
+                    lastnode.next = list2.head
+                    break
+                lastnode = lastnode.next
 
-        lastnode2 = list2.head
-        while lastnode2:
-            if lastnode2.next is list2.head:
-                lastnode2.next = self.head
-                break
-            lastnode2 = lastnode2.next
+            lastnode2 = list2.head
+            while lastnode2:
+                if lastnode2.next is list2.head:
+                    lastnode2.next = self.head
+                    break
+                lastnode2 = lastnode2.next
 

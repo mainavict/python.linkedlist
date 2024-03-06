@@ -80,7 +80,7 @@ class Linkedlist:
         print("\n")
 
     def removenode(self, n):
-        if self.head is None and n != 0:
+        if self.head is None :
             print("The list is empty")
 
         j = 0
@@ -91,7 +91,6 @@ class Linkedlist:
             if n == 0 and self.head is not None:
                 hold = self.head
                 self.head = hold.next
-                hold.next = None
                 break
             if n-j == 1:
                 holder = currentnode
@@ -124,30 +123,16 @@ class Linkedlist:
             print('The list is empty')
         hold = self.head
         self.head = hold.next
-        hold.next =None
+        hold.next = None
 
     def mergelist(self, list2):
-        lastnode = self.head
-        while lastnode is not None:
-            if lastnode.next is None:
-                lastnode.next = list2.head
-                break
-            lastnode = lastnode.next
+        if self.head is None or list2.head is None:
+            print("Empty list!cant merge an empty list ")
+        else:
+            lastnode = self.head
+            while lastnode is not None:
+                if lastnode.next is None:
+                    lastnode.next = list2.head
+                    break
+                lastnode = lastnode.next
 
-node1 = Node('1')
-node2 = Node('2')
-node3 = Node('3')
-node4 = Node('4')
-node5 = Node("5")
-nodet = Node('0')
-
-linkedlist1 =Linkedlist()
-linkedlist1.insert_front(node1)
-linkedlist1.insert_end(node2)
-linkedlist1.insert_end(node3)
-linkedlist1.insert_end(node4)
-linkedlist1.insert_end(node5)
-linkedlist1.printlist()
-linkedlist1.remove_front_node()
-print(node1.next)
-linkedlist1.printlist()

@@ -105,14 +105,23 @@ class Linkedlist:
                 self.head = hold.next
                 hold1 = hold.next
                 hold1.prev = None
+                hold.next = None
                 break
             if n-j == 1:
                 holder = currentnode
 
-            if j == n:
+            if j == n and currentnode.next is  not None:
                 holder.next = currentnode.next
                 hold = currentnode.next
                 hold.prev = holder
+                currentnode.next = None
+                currentnode.prev = None
+            elif j == n and currentnode.next is None:
+                holder.next = currentnode.next
+                currentnode.next = None
+                currentnode.prev = None
+
+
 
 
             currentnode = currentnode.next
@@ -130,6 +139,8 @@ class Linkedlist:
                 break
             if currentnode.next is not None:
                 held = currentnode
+            elif currentnode.next is None:
+                currentnode.prev = None
             currentnode = currentnode.next
             j += 1
         held.next = None
@@ -140,15 +151,18 @@ class Linkedlist:
         hold = self.head
         self.head = hold.next
         self.head.prev = None
+        hold.next = None
 
     def mergelist(self, list2):
-        lastnode = self.head
-        while lastnode is not None:
-            if lastnode.next is None:
-                lastnode.next = list2.head
-                list2.head.prev = lastnode
-                break
-            lastnode = lastnode.next
-
+        if self.head is None or list2.head is None:
+            print("Empty list!cant merge an empty list ")
+        else:
+            lastnode = self.head
+            while lastnode is not None:
+                if lastnode.next is None:
+                    lastnode.next = list2.head
+                    list2.head.prev = lastnode
+                    break
+                lastnode = lastnode.next
 
 

@@ -197,7 +197,7 @@ class Linkedlist:
 
     def mergelist(self, list2):
         if self.head is None or list2.head is None:
-            print("Empty list ,cant merge an empty list ")
+            print("Empty list!cant merge an empty list ")
         # elif list2.head is None:
         #     print(f"{list2} is an empty list ,cant merge an empty list")
         else:
@@ -216,4 +216,5 @@ class Linkedlist:
                     self.head.prev = lastnode1
                     break
                 lastnode1 = lastnode1.next
+
 
