@@ -98,7 +98,7 @@ class Linkedlist:
                 print(currentnode.data + '-->', end='')
                 break
 
-            if currentnode.next is None and j < n:
+            if currentnode.next is self.head and j < n:
                 print("invalid index")
                 break
 
@@ -107,28 +107,30 @@ class Linkedlist:
         print("\n")
 
     def removenode(self, n):
-        if self.head is None and n != 0:
+        if self.head is None:
             print("The list is empty")
 
         j = 0
         currentnode = self.head
         saver = self.head
         while currentnode:
-            if currentnode.next is None and n > j:
+            if currentnode.next is self.head and n > j:
                 print('invalid  index')
             if n == 0 and self.head is not None:
                 hold = self.head
                 self.head = hold.next
                 swap = hold
-                while swap.next is not  hold:
+                while swap.next is not hold:
                     swap = swap.next
                 swap.next = self.head
+                hold.next = None
                 break
             if n-j == 1:
                 holder = currentnode
 
             if j == n:
                 holder.next = currentnode.next
+                currentnode.next = None
 
             if currentnode.next is  saver:
                   break
@@ -149,6 +151,7 @@ class Linkedlist:
             if currentnode.next is not self.head:
                 held = currentnode
             elif currentnode.next is self.head:
+                currentnode.next = None
                 break
             currentnode = currentnode.next
             j += 1
@@ -166,6 +169,7 @@ class Linkedlist:
         while currentnode.next is not hold:
             currentnode = currentnode.next
         currentnode.next = self.head
+        hold.next = None
 
     def mergelist(self, list2):
         lastnode = self.head
@@ -180,4 +184,5 @@ class Linkedlist:
             if lastnode2.next is list2.head:
                 lastnode2.next = self.head
                 break
- 
+            lastnode2 = lastnode2.next
+
